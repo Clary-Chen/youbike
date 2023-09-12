@@ -1,0 +1,268 @@
+*{
+    margin: 0;
+}
+.stationInfo{
+    color: #323232;
+    @media(width<=600px){
+        .pc-navbar,.pc-bg{
+            display:none;
+        }
+    }
+    @media(width>600px){
+        .mobile-nav-button,.mobile-navbar{
+            display:none;
+        }
+    }
+
+
+    @media(width<=600px){
+        // background-color: rgb(234, 235, 209);
+        .nav-block{
+            width: 343px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .logo{
+                margin-left: 32px;
+                margin-right: 60px;
+                width: 65px;
+                img{
+                    width: 100%;
+                }
+            }
+            .mobile-nav-button{
+                width: 24px;
+                height: 24px;
+                background-color: #B5CC22;
+            }
+        }
+        // .mobile-navbar{
+        //     // display: none;
+        //     width: 375px;
+        //     height: 600px;
+        //     background-color: #B5CC22;
+        //     .mobile-titles{
+        //         width: 82px;
+        //         height: 248px;
+        //         padding-left: 32px;
+        //         padding-top: 32px;
+        //         padding-bottom: 244px;
+        //         display: flex;
+        //         flex-direction: column;
+        //         justify-content: space-between;
+        //         div{
+        //             height: 24px;
+        //             line-height: 24px;
+        //             font-weight: 500;
+        //             font-size: 18px;
+        //             color: #fff;
+        //         }
+        //         div:nth-child(3){
+        //             color: #677510;
+        //         }
+        //     }
+        //     .mobile-login-button{
+        //         margin-left: 32px;
+        //         width: 81px;
+        //         height: 40px;
+        //         line-height: 40px;
+        //         border-radius: 100px;
+        //         color: #B5CC22;
+        //         background-color: #fff;
+        //         text-align: center;
+        //     }
+        // }
+        .search-block{
+            // border: 1px solid rgb(64, 82, 82);
+            width: 311px;
+            margin-left: 32px;
+            .title{
+                width: 82px;
+                height: 24px;
+                margin-bottom: 16px;
+                line-height: 24px;
+                color: #B5CC22;
+                font-weight: 700;
+                font-size: 18px;
+            }
+            .search-and-city-select{
+                display: flex;
+                flex-direction: column;
+                .search{
+                    margin-bottom: 8px;
+                }
+                .city-select{
+                    margin-bottom: 16px;
+                }
+            }
+     
+            .area-select{
+                .all-cb{
+                    width: 109px;
+                    height: 40px;
+                    line-height: 40px;
+                    margin-bottom: 8px;
+                }
+                .options{
+                    margin-bottom: 8px;
+                    display: flex;
+                    justify-content: space-between;
+                    flex-wrap: wrap;
+                    div{
+                        // border: 1px solid rgb(64, 82, 82);
+                        width: 93px;
+                        height: 40px;
+                        // line-height: 40px;
+                        margin-bottom: 15px;
+                    }
+                }
+            }
+        }
+        .display-block{
+            border: 0.5px solid #AEAEAE;
+            border-radius: 20px;
+            width: 311px;
+            margin-left: 32px;
+            margin-bottom: 32px;
+            overflow: scroll;
+            div{
+                display: flex;
+                span{  
+                    margin: 0 -1px; //去掉span之間的白色縫隙
+                    height: 66px;
+                    flex-basis: 75px;
+                    flex-shrink: 0;
+                    font-weight: 400;
+                    font-size: 14px;
+                     display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .station-name{
+                    flex-basis: 161px;
+                }
+                   .color-green{
+                    color: #B5CC22;
+                }
+            }
+            div:nth-child(odd){
+                // background-color: #F6F6F6; 
+                span{
+                    background-color: #F6F6F6;
+                }
+            }
+            div:first-child{
+                // background-color: #B5CC22;
+                color: #FFf;
+                span{
+                    background-color: #B5CC22; //背景色要加在最寬的元素上，此處若加在div(witdth=311px)上，背景色就會隨滾輪滾向右邊消失
+                    font-weight: 500;
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+    @media(width>600px){
+        //  background-color: rgb(132, 173, 209);
+        .nav-block{
+            display: flex;
+            align-items: center;
+            .logo{
+                margin-left: 124px;
+                margin-right: 60px;
+            }
+        }
+        .search-block{
+            // border: 1px solid rgb(231, 42, 215);
+            width: 500px;
+            margin-left: 124px;
+            .title{
+                position: relative;
+                width: 109px;
+                height: 24px;
+                margin-bottom: 32px;
+                line-height: 24px;
+                color: #B5CC22;
+                font-weight: 700;
+                font-size: 24px;
+            }
+            .pc-bg{
+                position: absolute;
+                left: 700px;
+                top: 240px;
+            }
+            .search-and-city-select{
+                display: flex;
+                flex-direction: row-reverse;
+                justify-content: flex-end;
+                .city-select{
+                    width: 277px;
+                    margin-bottom: 24px;
+                    margin-right: 16px;
+                }
+                .search{
+                    width: 175px;
+                    margin-bottom: 24px;
+                }
+            }
+            .area-select{
+                .all-cb{
+                    width: 117px;
+                    height: 40px;
+                    margin-bottom: 15px;
+                }
+                .options{
+                    margin-bottom: 40px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    div{
+                        width: 117px;
+                        height: 40px;
+                        margin-bottom: 15px;
+                    }
+                }
+            }
+        }
+        .display-block{
+            width: 1192px;
+            margin-left: 124px;
+            margin-bottom: 44px;
+            border: 0.5px solid #AEAEAE;
+            border-radius: 28px;
+            overflow: hidden;
+            div{
+                height: 66px;
+                display: flex;
+                align-items: center;
+                span{  
+                    flex-basis: 15%;
+                    flex-shrink: 0; 
+                    height: 24px;
+                    line-height: 24px;
+                    font-weight: 400;
+                    font-size: 14px;
+                    text-align: center;
+                }
+                .station-name{
+                    flex-basis: 40%;
+                }
+                .color-green{
+                    color: #B5CC22;
+                }
+            }
+            div:nth-child(odd){
+                background-color: #F6F6F6;
+            }
+            div:first-child{
+                background-color: #B5CC22;
+                color: #FFf;
+                span{
+                    font-weight: 500;
+                    font-size: 16px;
+                }
+            }
+    
+        }
+    }
+
+}
