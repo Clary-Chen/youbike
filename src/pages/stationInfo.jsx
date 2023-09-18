@@ -6,6 +6,8 @@ import {groupBy} from 'lodash'
 import PcNavbar from '../components/PcNavbar'
 import MobileNavbar from '../components/MobileNavbar'
 export default function StationInfo() {
+    const [ua]=useState(navigator.userAgent.includes('Mobile')?'mobile':'pc')
+    console.log(ua)
     // mobile-navbar 控制變數
     const [displayNav,setDisplayNav] = useState(false)
     // search-block 資料變數
@@ -75,17 +77,105 @@ export default function StationInfo() {
 
   return (
     <div className='stationInfo'>
+    {ua==='mobile' &&
+    <div className='mobile'>
         {/* nav-block --------------------------------------------------- */}
         <div className='nav-block'>
             <div className='logo'><img src={require('../images/youbike_logo.png')}/></div>
             <div className='mobile-nav-button' onClick={()=>setDisplayNav(!displayNav)}>
-            {displayNav?<img src={require('../images/youbike-close-nav-button.png')}/>
-            :<img src={require('../images/youbike-nav-button.png')}/>}
+                {displayNav?<img src={require('../images/youbike-close-nav-button.png')}/>
+                :<img src={require('../images/youbike-nav-button.png')}/>}
             </div>
-            <PcNavbar/>
         </div>
-        {/* mobile-navbar (點擊顯示&隱藏)------------------------------------------------ */}
+        {/* mobile-navbar (點擊顯示&隱------------------------------------------------ */}
         {displayNav && <MobileNavbar/>}
+        {/* search-block ------------------------------------------------ */}
+        {!displayNav &&
+        <div className='search-block'>
+            <div className='title'>站點資訊</div>
+            <div className='search-and-city-select'>
+                <AutoComplete
+                    className='search'
+                    size='large'
+                    options={stationOptions}
+                    onSelect={selectStation}
+                    onSearch={(text) => typeInStation(text)}
+                    placeholder="搜尋站點"
+                />
+                <Select
+                    className='city-select'
+                    size='large'    
+                    defaultValue="選擇縣市"
+                    options={cityOptions}
+                    filterOption={filterCityOptions}
+                    showSearch
+                    optionFilterProp='children'
+                />      
+            </div>
+            <div className='area-select'>
+                <div className='all-cb'>
+                    <input  
+                        type='checkbox' 
+                        checked={targetAllAreas}  
+                        onChange={changeAllAreas}
+                    />
+                    <label>全部勾選</label>
+                </div>
+                <div className='options'>
+                    {areaOptions.length!=0 && areaOptions.map((item,index)=>{
+                        return (
+                            <div key={index}>
+                                <input type='checkbox' onChange={()=>changeArea(index)} checked={targetAreas.includes(index)}/>
+                                <label>{item}</label>
+                            </div>
+                        )
+                    })}
+                </div>
+            </div>
+        </div>
+        }
+        {/* display-block ----------------------------------------------- */}
+        {!displayNav &&
+        <div className='display-block'>
+            <div>
+                <span>縣市</span>
+                <span>區域</span>
+                <span className='station-name'>站點名稱</span>
+                <span>可借車輛</span>
+                <span>可還空位</span>
+            </div>
+            {toggleTarget==='station' && <div>
+                    <span>台北市</span>
+                    <span>{targetStation.sarea}</span>
+                    <span className='station-name'>{targetStation.sna}</span>
+                    <span className='color-green'>{targetStation.sbi}</span>
+                    <span className='color-green'>{targetStation.bemp}</span>
+            </div>}
+            {toggleTarget==='area' && targetAreas.length!=0 && targetAreas.map((item)=>{
+                return dataInArea[areaOptions[item]].map((i,index)=>{
+                        return (
+                        <div key={index}>
+                            <span>台北市</span>
+                            <span>{i.sarea}</span>
+                            <span className='station-name'>{i.sna}</span>
+                            <span className='color-green'>{i.sbi}</span>
+                            <span className='color-green'>{i.bemp}</span>
+                        </div>
+                        )
+                })
+            })}
+        </div>
+        }
+    </div>
+    }
+
+    {ua==='pc' &&
+    <div className='pc'>
+        {/* nav-block --------------------------------------------------- */}
+        <div className='nav-block'>
+            <div className='logo'><img src={require('../images/youbike_logo.png')}/></div>
+            {ua==='pc' && <PcNavbar/>}
+        </div>
         {/* search-block ------------------------------------------------ */}
         {!displayNav &&
         <div className='search-block'>
@@ -164,7 +254,8 @@ export default function StationInfo() {
             })}
         </div>
         }
-     
+    </div>
+    }
     </div>
   )
 }

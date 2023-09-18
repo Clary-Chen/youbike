@@ -2,23 +2,8 @@
     margin: 0;
 }
 .stationInfo{
-    color: #323232;
-    @media(width<=600px){
-        .pc-navbar,.pc-bg{
-            display:none;
-        }
-    }
-    @media(width>600px){
-        .mobile-nav-button,.mobile-navbar{
-            display:none;
-        }
-    }
-
-
-    @media(width<=600px){
-        // background-color: rgb(234, 235, 209);
+    .mobile{
         .nav-block{
-            width: 343px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -31,49 +16,13 @@
                 }
             }
             .mobile-nav-button{
+                margin-right: 40px;
                 width: 24px;
                 height: 24px;
                 background-color: #B5CC22;
             }
         }
-        // .mobile-navbar{
-        //     // display: none;
-        //     width: 375px;
-        //     height: 600px;
-        //     background-color: #B5CC22;
-        //     .mobile-titles{
-        //         width: 82px;
-        //         height: 248px;
-        //         padding-left: 32px;
-        //         padding-top: 32px;
-        //         padding-bottom: 244px;
-        //         display: flex;
-        //         flex-direction: column;
-        //         justify-content: space-between;
-        //         div{
-        //             height: 24px;
-        //             line-height: 24px;
-        //             font-weight: 500;
-        //             font-size: 18px;
-        //             color: #fff;
-        //         }
-        //         div:nth-child(3){
-        //             color: #677510;
-        //         }
-        //     }
-        //     .mobile-login-button{
-        //         margin-left: 32px;
-        //         width: 81px;
-        //         height: 40px;
-        //         line-height: 40px;
-        //         border-radius: 100px;
-        //         color: #B5CC22;
-        //         background-color: #fff;
-        //         text-align: center;
-        //     }
-        // }
         .search-block{
-            // border: 1px solid rgb(64, 82, 82);
             width: 311px;
             margin-left: 32px;
             .title{
@@ -95,13 +44,12 @@
                     margin-bottom: 16px;
                 }
             }
-     
             .area-select{
                 .all-cb{
                     width: 109px;
                     height: 40px;
                     line-height: 40px;
-                    margin-bottom: 8px;
+                    margin-bottom: 15px;
                 }
                 .options{
                     margin-bottom: 8px;
@@ -110,7 +58,7 @@
                     flex-wrap: wrap;
                     div{
                         // border: 1px solid rgb(64, 82, 82);
-                        width: 93px;
+                        width: 80px;
                         height: 40px;
                         // line-height: 40px;
                         margin-bottom: 15px;
@@ -162,8 +110,7 @@
             }
         }
     }
-    @media(width>600px){
-        //  background-color: rgb(132, 173, 209);
+    .pc{
         .nav-block{
             display: flex;
             align-items: center;
@@ -264,5 +211,16 @@
     
         }
     }
+    color: #323232;
+    // @media(width<=600px){
+    //     .pc-navbar,.pc-bg{
+    //         display:none;
+    //     }
+    // }
+    // @media(width>600px){
+    //     .mobile-nav-button,.mobile-navbar{
+    //         display:none;
+    //     }
+    // }
 
 }
