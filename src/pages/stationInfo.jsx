@@ -7,6 +7,8 @@ import PcNavbar from '../components/PcNavbar'
 import MobileNavbar from '../components/MobileNavbar'
 export default function StationInfo() {
     const [ua]=useState(navigator.userAgent.includes('Mobile')?'mobile':'pc')
+    const [innerWidth,setInnerWidth] = useState(0)
+    console.log(innerWidth)
     console.log(ua)
     // mobile-navbar 控制變數
     const [displayNav,setDisplayNav] = useState(false)
@@ -73,11 +75,16 @@ export default function StationInfo() {
             changeAllAreas()
         })
     },[])
-
+    useEffect(()=>{
+        window.addEventListener('resize',()=>setInnerWidth(window.innerWidth))
+        return ()=>{
+            window.removeEventListener('resize',setInnerWidth(window.innerWidth))
+        }
+    },[])
 
   return (
     <div className='stationInfo'>
-    {ua==='mobile' &&
+    {(ua==='mobile' || innerWidth<=600) &&
     <div className='mobile'>
         {/* nav-block --------------------------------------------------- */}
         <div className='nav-block'>
@@ -169,7 +176,7 @@ export default function StationInfo() {
     </div>
     }
 
-    {ua==='pc' &&
+    {(ua==='pc' && innerWidth>600) && 
     <div className='pc'>
         {/* nav-block --------------------------------------------------- */}
         <div className='nav-block'>
