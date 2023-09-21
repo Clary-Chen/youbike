@@ -62,6 +62,7 @@ export default function StationInfo() {
     const selectStation=(text)=>{
         setToggleTarget('station')
         setTargetStation(data.find(i=>i.sna===text))
+        setTargetAllAreas(false)
         setTargetAreas([])
     }
     useEffect(()=>{
